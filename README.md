@@ -49,8 +49,85 @@ The video feed displays:
 
 ## Run the Project
 
+> [!IMPORTANT]
+> **Python Version Compatibility:** 
+> MediaPipe's legacy solutions API (`mp.solutions`) is not supported on newer/prerelease Python versions like **Python 3.13 or 3.14**. To run this application, it is highly recommended to use **Python 3.11** or **Python 3.10**.
+
+You can run this project locally in a terminal using one of the following methods:
+
+### Option A: Using `uv` (Recommended - fastest & cleanest)
+
+If you have `uv` installed, you can run the script directly with Python 3.11 without polluting your global environment:
+
 ```bash
+# Clone the repository and enter the directory
 git clone https://github.com/pawanbhatia1304/concentration_tracker
 cd concentration_tracker
-pip install -r requirements.txt
+
+# Run the script directly using uv (which automatically sets up Python 3.11 and dependencies)
+uv run --python 3.11 --with opencv-python --with numpy --with "mediapipe<0.10.30" python concentration_tracker.py
+```
+
+Alternatively, you can create a local virtual environment using `uv`:
+
+```bash
+# Create a Python 3.11 virtual environment
+uv venv --python 3.11
+
+# Activate the virtual environment
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# On Windows (CMD):
+.venv\Scripts\activate.bat
+# On macOS/Linux:
+source .venv/bin/activate
+
+# Install the required packages
+uv pip install opencv-python numpy "mediapipe<0.10.30"
+
+# Run the tracker
 python concentration_tracker.py
+```
+
+---
+
+### Option B: Using Conda
+
+If you use Conda, you can set up a dedicated environment with Python 3.11:
+
+```bash
+# Create a new environment with Python 3.11
+conda create -n tracker python=3.11 -y
+
+# Activate the environment
+conda activate tracker
+
+# Install the required packages
+pip install opencv-python numpy "mediapipe<0.10.30"
+
+# Run the tracker
+python concentration_tracker.py
+```
+
+---
+
+### Option C: Using Standard Virtual Environment (venv)
+
+If you already have Python 3.11 or 3.10 installed on your system as `python3.11` (or if it is your default interpreter), you can use the standard `venv` module:
+
+```bash
+# Create a virtual environment
+python3.11 -m venv venv
+
+# Activate the virtual environment
+# On Windows (PowerShell):
+venv\Scripts\Activate.ps1
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run the tracker
+python concentration_tracker.py
+```
