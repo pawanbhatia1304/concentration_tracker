@@ -1,0 +1,9 @@
+streamlit
+streamlit-webrtc
+streamlit-autorefresh
+mediapipe
+opencv-python
+numpy
+pandas
+protobuf==4.25.8
+av
